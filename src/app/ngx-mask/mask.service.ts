@@ -197,16 +197,21 @@ export class MaskService extends MaskApplierService {
                 arr.push(inputVal[i]);
             }
         }
-        if (arr.length <= 3) {
+
+        const flag: number = inputVal
+            .split('_')[0]
+            .split('.')
+            .filter((i: string) => i).length;
+        if (flag === 1) {
             return '_._._';
         }
-        if (arr.length > 3 && arr.length <= 6) {
-            return '_._';
+        if (flag === 2) {
+            return '._._';
         }
-        if (arr.length > 6 && arr.length <= 9) {
-            return '_';
+        if (flag === 3) {
+            return '._';
         }
-        if (arr.length > 9 && arr.length <= 12) {
+        if (flag === 4) {
             return '';
         }
         return '';
